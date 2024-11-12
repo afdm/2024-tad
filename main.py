@@ -91,7 +91,7 @@ def analyseur(chaine) :
                 print("Syntaxe incorrecte")
                 return
     
-    # Est qu'il reste des éléments dans la pile ? (condition n°1) de sortie)
+    # Est qu'il reste des éléments sur la pile ? (condition n°1 de sortie)
     if not pile.estVide() :
         print("Syntaxe incorrecte !")
         return
