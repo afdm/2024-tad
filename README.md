@@ -1,1 +1,1 @@
-Learn, implement and use TDA !
+Learn, implement and use TAD !
