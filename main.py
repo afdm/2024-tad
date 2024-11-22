@@ -22,12 +22,46 @@
     
 #     return p[-1]
 
+
+# Implémentation d'une file en programation procédurale
+
+# file = []
+
+# def defiler(file: list) : 
+#     if estVide(file) :
+#         return
+    
+#     return file.pop(0)
+
+
+# def enfiler(file: list, el) :
+#     file.append(el)
+    
+# def tete(file: list) : 
+#     return file[0]
+    
+# def estVide(file) :
+#     return len(file) == 0
+
+# enfiler(file, 1)
+# enfiler(file, 5)
+# enfiler(file, 2)
+
+# print(tete(file))
+
+# defiler(file)
+
+# print(tete(file))
+
+# defiler(file)
+# defiler(file)
+# defiler(file)
+
+
 # Implémentation d'une pile en programation orientée objet
+# from classes.Pile import Pile
 
 # Tests de notre pile
-# (Faire les tests pour les deux cas)
-
-# from classes.Pile import Pile
 
 # pile = Pile()
 
@@ -46,60 +80,72 @@
 # pile.depiler()
 # pile.depiler()
 
+# Implémentation d'une File en programation orientée objet
+# from classes.File import File
 
-"""
-Problème : Vérifier qu'une expression n'est pas d'erreur de syntaxe. Par exemple, que ==> [({ <=== soient bien refermés
+# Tests de notre file
 
-1. Lire / Parcourir la chaine
-2. Repérer les symboles ouvrants 
-3. Repérer les symboles fermants
-4. Il y deux conditions de sortie :
-  -> 1) on recontre un symbole ouvrant, il n'est jamais refermé... A la fin de l'opération il reste des informations sur la pile
-  -> 2) le symbole fermant ne correspond pas au dernier symbole ouvrant !
+# file = File()
 
-Ex : "a+b * [2ea] + {y+(mo *(r)} --> Ceci, a une erreur de syntaxe, il manque une parenthèse (avant le dernier symbole). 
-"""
+# file.enfiler(1)
+# file.enfiler(5)
+# file.enfiler(2)
 
-from classes.Pile import Pile
+# print(file.tete())
 
-pile = Pile()
+# file.defiler()
 
-dictionnaire = {
-    "]" : "[",
-    "}" : "{",
-    ")" : "("
-}
+# print(file.tete())
 
-def estUnePaire(symboleOuvrant, symboleFermant) :
-    return dictionnaire[symboleFermant] == symboleOuvrant
+# file.defiler()
+# file.defiler()
+# file.defiler()
 
-def analyseur(chaine) :
 
-    # Parcours de la chaine
-    for c in chaine :
+# Implémentation (partielle) d'une Liste chainée en programation orientée objet
+# TODO Ajouter: 
+# - La supression d'un noeud
+# - La recherche d'une donnée
+# - (Récupérer un élément à un index...)
+  
+from classes.Node import Node
+from classes.LinkedList import LinkedList
 
-        # Est-ce que notre caractère est un symbole ouvrant ? 
-        if c in ["[", "(", "{"] :
-            pile.empiler(c)
-        
-        # Est-ce que notre caractère est un symbole fermant ? 
-        if c in ["]", ")", "}"] :
-            dernierSymboleOuvrant = pile.depiler()
+head = Node("A")
+b = Node("B")
+head.next = b
 
-            # Si oui, est-ce qu'il forme une paire avec le dernier caractère ouvrant ?
-            if not estUnePaire(dernierSymboleOuvrant, c) :
-                print("Syntaxe incorrecte")
-                return
-    
-    # Est qu'il reste des éléments sur la pile ? (condition n°1 de sortie)
-    if not pile.estVide() :
-        print("Syntaxe incorrecte !")
-        return
-    
-    # Si on arrive ici, c'est qu'on a passé toutes les vérifications !
-    print("Syntaxe est correcte")
+#  A -> B
+list = LinkedList(head)
+print(list.length())
+print(list.getData())
 
+#  A -> B -> D
+list.add("D")
+print(list.getData())
+
+list.insertAt(1, "C")
+print(list.getData())
+
+list.insertAt(0, "Début")
+print(list.getData())
+
+
+list.insertAt(-1, "Fin")
+print(list.getData())
+
+list.insertAt(100, "bug, ou pas ?!")
+print(list.getData())
+
+list.displayData()
+
+
+# Utilisation de la pile sur un algorithme
+from utils import analyseurSyntaxe
 
 uneExpression = "a+b * [2ea] + {y+(mo *(r)}"
+analyseurSyntaxe(uneExpression)
 
-analyseur(uneExpression)
+# Utilisation de la file dans un algorithme
+from utils import  binSequenceOf
+binSequenceOf(5)

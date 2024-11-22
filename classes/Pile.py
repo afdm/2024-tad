@@ -1,5 +1,5 @@
 class Pile :
-    def __init__(self,):
+    def __init__(self):
         self.elements = []
 
     def empiler(self, el):
