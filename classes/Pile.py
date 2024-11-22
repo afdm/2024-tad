@@ -21,8 +21,6 @@ class Pile :
             return
             
         return self.elements[-1]
-
-
-
+    
 class PileFin :
     pass
