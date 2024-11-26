@@ -137,6 +137,11 @@ print(list.getData())
 list.insertAt(100, "bug, ou pas ?!")
 print(list.getData())
 
+
+list.add("...")
+list.displayData()
+
+list.removeIndex(6)
 list.displayData()
 
 

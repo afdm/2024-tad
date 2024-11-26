@@ -35,6 +35,7 @@ class LinkedList:
 
         return counter
 
+    # add data at the end of the list
     def add(self, data) :
         node = Node(data)
 
@@ -47,7 +48,7 @@ class LinkedList:
     def insertAt(self, index, data) :
        
         if index < -1 :
-            print("Vous pouvez utiliser la méthode add() ou l'index -1 pout inserser à la fin de la liste")
+            print("Vous pouvez utiliser la méthode add() ou l'index -1 pour inserser à la fin de la liste")
             return
 
         if index == -1 :
@@ -74,3 +75,23 @@ class LinkedList:
 
         node.next = current.next
         current.next =  node
+
+    def removeIndex(self, index) :
+        if index == 0 :
+            self.head = self.head.next
+            return
+
+        if index < 0 or index > self.length()-1:
+            print(f"index: {index} is out of range")
+            return           
+
+        current = self.head
+        i = 0
+
+        while i < index :
+            previous = current
+            current = current.next
+            i += 1
+        
+        previous.next = current.next
+        current = previous
