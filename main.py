@@ -104,53 +104,99 @@
 
 # Implémentation (partielle) d'une Liste chainée en programation orientée objet
 # TODO Ajouter: 
-# - La supression d'un noeud
 # - La recherche d'une donnée
 # - (Récupérer un élément à un index...)
   
 from classes.Node import Node
 from classes.LinkedList import LinkedList
 
-head = Node("A")
-b = Node("B")
-head.next = b
+# head = Node("A")
+# b = Node("B")
+# head.next = b
 
-#  A -> B
-list = LinkedList(head)
-print(list.length())
-print(list.getData())
+# #  A -> B
+# list = LinkedList(head)
+# print(list.length())
+# print(list.getData())
 
-#  A -> B -> D
-list.add("D")
-print(list.getData())
+# #  A -> B -> D
+# list.add("D")
+# print(list.getData())
 
-list.insertAt(1, "C")
-print(list.getData())
+# list.insertAt(1, "C")
+# print(list.getData())
 
-list.insertAt(0, "Début")
-print(list.getData())
-
-
-list.insertAt(-1, "Fin")
-print(list.getData())
-
-list.insertAt(100, "bug, ou pas ?!")
-print(list.getData())
+# list.insertAt(0, "Début")
+# print(list.getData())
 
 
-list.add("...")
-list.displayData()
+# list.insertAt(-1, "Fin")
+# print(list.getData())
 
-list.removeIndex(6)
-list.displayData()
+# list.insertAt(100, "bug, ou pas ?!")
+# print(list.getData())
+
+
+# list.add("...")
+# list.displayData()
+
+# list.removeIndex(6)
+# list.displayData()
 
 
 # Utilisation de la pile sur un algorithme
 from utils import analyseurSyntaxe
 
 uneExpression = "a+b * [2ea] + {y+(mo *(r)}"
-analyseurSyntaxe(uneExpression)
+# analyseurSyntaxe(uneExpression)
 
 # Utilisation de la file dans un algorithme
 from utils import  binSequenceOf
-binSequenceOf(5)
+# binSequenceOf(5)
+
+"""
+     2
+    / \
+   20 25
+  /   / \
+ 24  31 47
+"""
+
+from classes.Node import TreeNode
+from classes.Tree import BinaryTree
+
+n1 = TreeNode(2)
+n2 = TreeNode(20)
+n3 = TreeNode(25)
+n4 = TreeNode(24)
+n5 = TreeNode(31)
+n6 = TreeNode(47)
+
+n1.left = n2
+n1.right = n3
+n2.left = n4
+n3.left = n5
+n3.right = n6
+
+bt = BinaryTree(n1)
+
+def size (root: TreeNode):
+    if root == None:
+        return 0
+    
+    return 1 + size(root.left) + size(root.left)
+
+def sum(root):
+    if root == None:
+        return 0
+    
+    return root.data + sum(root.right) + sum(root.left)
+
+print(size(bt.root))
+print(sum(bt.root))
+
+# print(bt.depthFirst())
+# print(bt.breadFirst())
+
+
+
