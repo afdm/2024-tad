@@ -19,8 +19,8 @@ L'arbre que vous devez représenter est le suivant :
 [Astuce] Utiliser des Noeuds  pour contruire votre arbre binaire.
     - Implémenter la class Noeud d'un arbre 
 [Astuce] Attention les piles ont leurs propres sens
-[Astuce] Récursive est un methode qui se rappel (elle même)
-[Astuce] Avec les methodes récurvives, pensez aux conditions de sortie !
+[Astuce] Récursive est un méthode qui se rappel (elle même)
+[Astuce] Avec les méthodes récursives, pensez aux conditions de sorties !
 [Astuce] https://github.com/afdm/2024-tad/
 """
 
@@ -50,7 +50,7 @@ class BinaryTree:
 
         return data
 
-    def breadFirst(self) :
+    def breadthFirst(self) :
         data = []
         file = File()
         file.enfiler(self.root)
@@ -67,3 +67,13 @@ class BinaryTree:
                file.enfiler(current.left)
         
         return data
+    
+    # def sum(self, node = None):
+    #     if node == None:
+    #         node = self.root
+
+          # Base case  
+    #     if node == None:
+    #         return 0
+                
+    #     return node.data + self.sum(node.right) + self.sum(node.left)

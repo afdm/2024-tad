@@ -180,23 +180,92 @@ n3.right = n6
 
 bt = BinaryTree(n1)
 
+# Calcule et retourne la taille de l'arbre
 def size (root: TreeNode):
     if root == None:
         return 0
     
     return 1 + size(root.left) + size(root.left)
 
+# Calcule et retourne la somme des noeuds de l'arbre
 def sum(root):
     if root == None:
         return 0
     
     return root.data + sum(root.right) + sum(root.left)
 
-print(size(bt.root))
-print(sum(bt.root))
+# print(size(bt.root))
+
+# print(bt.sum())
+# print(sum(bt.root))
 
 # print(bt.depthFirst())
-# print(bt.breadFirst())
+# print(bt.breadthFirst())
 
 
+def BT_insert(value, root: TreeNode) :
+    if root == None : 
+        return TreeNode(value)
 
+    # TODO définir une condition 
+    root.left = BT_insert(value, root.left)
+        
+    # root.right = BT_insert(value, root.right)
+
+    return root
+
+def BST_insert(value, root: TreeNode) :
+    if root == None : 
+        return TreeNode(value)
+
+    if value < root.data :
+        root.left = BST_insert(value, root.left)
+
+    if value >= root.data :
+        root.right = BST_insert(value, root.right)
+
+    return root
+
+def BT_search(value, root) :
+    if root == None : 
+        return False
+    
+    return (root.data == value 
+            or BT_search(value, root.left) 
+            or BT_search(value, root.right))
+
+def BST_search(value, root) :
+    if root == None : 
+        return False
+    
+    if root.data == value :
+        return True
+    
+    if value < root.data :
+        return BST_search(value, root.left) 
+   
+    if value >= root.data :
+        return BST_search(value, root.right) 
+
+root = TreeNode(15)
+arr = [10, 20, 8, 18, 23, 25]
+
+for el in arr :
+    root = BST_insert(el, root)
+
+bt = BinaryTree(root)
+print(bt.depthFirst())
+
+# print(BT_search(11, root))
+# print(BST_search(11, root))
+
+import time
+
+start_time = time.time()
+print(BT_search(23, root))
+print(f"----{time.time() - start_time}-----")
+
+
+start_time = time.time()
+print(BST_search(23, root))
+print(f"----{time.time() - start_time}-----")
