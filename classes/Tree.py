@@ -6,7 +6,7 @@ Implémenter sous la forme d'une class un arbre binaire avec les opérations sui
  - Parcours en largeur --> avec priorité à droite --> avec une méthode itérative -> 2, 25, 20, 47, 31, 24
  
  
-Afficher la taille de l'arbre --> avec une méthode récusive -> 7
+Afficher la taille de l'arbre --> avec une méthode récusive -> 6
 Calculer la somme de l'arbre --> avec une méthode récusive -> 149
 
 L'arbre que vous devez représenter est le suivant :
@@ -66,14 +66,35 @@ class BinaryTree:
             if current.left:
                file.enfiler(current.left)
         
-        return data
-    
-    # def sum(self, node = None):
-    #     if node == None:
-    #         node = self.root
-
-          # Base case  
-    #     if node == None:
-    #         return 0
+        return data  
+    def sum(self, node: TreeNode) :       
+        if node == None:
+            return 0
                 
-    #     return node.data + self.sum(node.right) + self.sum(node.left)
+        return node.data + self.sum(node.right) + self.sum(node.left)
+    
+    def size(self, node: TreeNode) :
+        if node == None:
+            return 0
+        
+        return 1 + self.size(node.right) + self.size(node.left)
+
+    
+    def insert(self, value, root: TreeNode) :
+        if root == None : 
+            return TreeNode(value)
+
+        # TODO définir une condition 
+        root.left = self.insert(value, root.left)
+            
+        # root.right = self.insert(value, root.right)
+
+        return root
+    
+    def search(self, value, root : TreeNode) :
+        if root == None : 
+            return False
+    
+        return (root.data == value 
+                or self.search(value, root.left) 
+                or self.search(value, root.right))

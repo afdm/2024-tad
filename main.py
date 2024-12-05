@@ -107,8 +107,8 @@
 # - La recherche d'une donnée
 # - (Récupérer un élément à un index...)
   
-from classes.Node import Node
-from classes.LinkedList import LinkedList
+# from classes.Node import Node
+# from classes.LinkedList import LinkedList
 
 # head = Node("A")
 # b = Node("B")
@@ -145,13 +145,13 @@ from classes.LinkedList import LinkedList
 
 
 # Utilisation de la pile sur un algorithme
-from utils import analyseurSyntaxe
+# from utils import analyseurSyntaxe
 
-uneExpression = "a+b * [2ea] + {y+(mo *(r)}"
+# uneExpression = "a+b * [2ea] + {y+(mo *(r)}"
 # analyseurSyntaxe(uneExpression)
 
 # Utilisation de la file dans un algorithme
-from utils import  binSequenceOf
+# from utils import  binSequenceOf
 # binSequenceOf(5)
 
 """
@@ -195,9 +195,10 @@ def sum(root):
     return root.data + sum(root.right) + sum(root.left)
 
 # print(size(bt.root))
+print(bt.size(bt.root))
 
-# print(bt.sum())
 # print(sum(bt.root))
+print(bt.sum(bt.root))
 
 # print(bt.depthFirst())
 # print(bt.breadthFirst())
@@ -247,25 +248,35 @@ def BST_search(value, root) :
     if value >= root.data :
         return BST_search(value, root.right) 
 
-root = TreeNode(15)
+
 arr = [10, 20, 8, 18, 23, 25]
 
+# Procedural
+root = TreeNode(15)
 for el in arr :
     root = BST_insert(el, root)
 
 bt = BinaryTree(root)
 print(bt.depthFirst())
+print(BT_search(11, root))
 
-# print(BT_search(11, root))
+# Objet 
+bt2 = BinaryTree(TreeNode(15))
+for el in arr :
+    bt2.insert(el, bt2.root)
+
+print(bt2.depthFirst())
+print(bt2.search(18, bt2.root))
+
 # print(BST_search(11, root))
 
-import time
+# import time
 
-start_time = time.time()
-print(BT_search(23, root))
-print(f"----{time.time() - start_time}-----")
+# start_time = time.time()
+# print(BT_search(23, root))
+# print(f"----{time.time() - start_time}-----")
 
 
-start_time = time.time()
-print(BST_search(23, root))
-print(f"----{time.time() - start_time}-----")
+# start_time = time.time()
+# print(BST_search(23, root))
+# print(f"----{time.time() - start_time}-----")
