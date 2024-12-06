@@ -67,6 +67,7 @@ class BinaryTree:
                file.enfiler(current.left)
         
         return data  
+    
     def sum(self, node: TreeNode) :       
         if node == None:
             return 0
@@ -98,3 +99,58 @@ class BinaryTree:
         return (root.data == value 
                 or self.search(value, root.left) 
                 or self.search(value, root.right))
+    
+
+class BinarySearchTree: 
+    def __init__(self, root: TreeNode) :
+        self.root = root
+
+    def insert(self, value, root: TreeNode) :
+        if root == None : 
+            return TreeNode(value)
+
+        if value < root.data :
+            root.left = self.insert(value, root.left)
+
+        if value >= root.data :
+            root.right = self.insert(value, root.right)
+
+        return root
+
+#   def inOrder(self, root: TreeNode) :
+#         if root == None :
+#             return         
+        
+#         self.inOrder(root.left)
+#         print(root.data)
+#         self.inOrder(root.right) 
+
+#         return root
+
+    def inOrder(self, root: TreeNode, rightOrder = False) :
+        if root == None :
+            return []        
+        
+        left = self.inOrder(root.left, rightOrder)
+        right = self.inOrder(root.right, rightOrder) 
+
+        if rightOrder : 
+            return [*right, root.data, *left]
+        
+        return [*left, root.data, *right]    
+    
+    def search(self, value,  root : TreeNode) :
+        if root == None : 
+            return False
+    
+        if root.data == value :
+            return True
+    
+        if value < root.data :
+            return self.search(value, root.left) 
+   
+        if value >= root.data :
+            return self.search(value, root.right) 
+
+
+    

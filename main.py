@@ -163,7 +163,7 @@
 """
 
 from classes.Node import TreeNode
-from classes.Tree import BinaryTree
+from classes.Tree import BinaryTree, BinarySearchTree
 
 n1 = TreeNode(2)
 n2 = TreeNode(20)
@@ -195,10 +195,10 @@ def sum(root):
     return root.data + sum(root.right) + sum(root.left)
 
 # print(size(bt.root))
-print(bt.size(bt.root))
+# print(bt.size(bt.root))
 
 # print(sum(bt.root))
-print(bt.sum(bt.root))
+# print(bt.sum(bt.root))
 
 # print(bt.depthFirst())
 # print(bt.breadthFirst())
@@ -257,20 +257,20 @@ for el in arr :
     root = BST_insert(el, root)
 
 bt = BinaryTree(root)
-print(bt.depthFirst())
-print(BT_search(11, root))
+# print(bt.depthFirst())
+# print(BT_search(11, root))
 
 # Objet 
 bt2 = BinaryTree(TreeNode(15))
 for el in arr :
     bt2.insert(el, bt2.root)
 
-print(bt2.depthFirst())
-print(bt2.search(18, bt2.root))
+# print(bt2.depthFirst())
+# print(bt2.search(18, bt2.root))
 
 # print(BST_search(11, root))
 
-# import time
+import time
 
 # start_time = time.time()
 # print(BT_search(23, root))
@@ -280,3 +280,20 @@ print(bt2.search(18, bt2.root))
 # start_time = time.time()
 # print(BST_search(23, root))
 # print(f"----{time.time() - start_time}-----")
+
+bst = BinarySearchTree(TreeNode(15))
+
+for el in [10, 20, 50, 8, 18, 23, 25] :
+    bst.insert(el, bst.root)
+
+begin = time.time()
+print(bst.search(17, bst.root))
+print(f"{time.time() - begin}s")
+
+print(bst.inOrder(bst.root))
+
+rightOrder = True
+print(bst.inOrder(bst.root, rightOrder))
+
+
+
